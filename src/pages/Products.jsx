@@ -6,7 +6,7 @@ const Products = () => {
   const [query, setQuery] = useState("");
   return (
     <>
-      <div className="max-w-4xl h-20 bg-gray-200 p-4 ">
+      <div className="max-w-4xl m-5 h-20 bg-gray-200 p-4 ">
         <form
           className="rounded-l-lg w-full   h-full p-2 flex items-center "
           action=""
