@@ -1,14 +1,23 @@
 import { Outlet } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import { useContext } from "react";
+import { DarkModeContext } from "./DarkModeContext";
 
 const App = () => {
-  return (
-    <div className="max-w-4xl mx-auto py-20 ">
-      <Header />
+  const { darkMode } = useContext(DarkModeContext);
 
-      <Outlet />
-      <Footer />
+  return (
+    <div
+      className={`w-screen   overflow-x-hidden
+        ${darkMode ? "dark" : ""} `}
+    >
+      <div className=" py-16  dark:bg-slate-900">
+        <Header />
+
+        <Outlet />
+        <Footer />
+      </div>
     </div>
   );
 };

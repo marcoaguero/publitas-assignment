@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
@@ -5,9 +6,11 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import About from "./pages/About.jsx";
 import Contact from "./pages/Contact.jsx";
-import Home from "./pages/Home.jsx";
 import Products from "./pages/Products.jsx";
 import Cart from "./pages/Cart.jsx";
+import Product from "./pages/Product.jsx";
+import { ShopProvider } from "./ShopContext.jsx";
+import { DarkModeProvider } from "./DarkModeContext.jsx";
 
 const routerProvider = createBrowserRouter([
   {
@@ -16,8 +19,8 @@ const routerProvider = createBrowserRouter([
 
     children: [
       {
-        path: "/",
-        element: <Home />,
+        index: true,
+        element: <Products />,
       },
       {
         path: "/about",
@@ -32,6 +35,10 @@ const routerProvider = createBrowserRouter([
         element: <Products />,
       },
       {
+        path: "/product-details/:id",
+        element: <Product />,
+      },
+      {
         path: "/cart",
         element: <Cart />,
       },
@@ -41,6 +48,10 @@ const routerProvider = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={routerProvider} />
+    <ShopProvider>
+      <DarkModeProvider>
+        <RouterProvider router={routerProvider} />
+      </DarkModeProvider>
+    </ShopProvider>
   </React.StrictMode>
 );
