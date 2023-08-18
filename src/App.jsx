@@ -9,7 +9,7 @@ const App = () => {
 
   return (
     <div
-      className={`w-screen   overflow-x-hidden
+      className={`   
         ${darkMode ? "dark" : ""} `}
     >
       <div className=" py-16  dark:bg-slate-900">
