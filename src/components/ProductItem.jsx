@@ -17,22 +17,10 @@ const ProductItem = ({ product }) => {
         <h1 className="font-bold text-xl mb-2">{product.title}</h1>
         <p className="text-gray-600 mb-4 truncate">{product.description}</p>
         <div className="flex justify-between">
-          <span className="text-blue-500 font-semibold ">
-            ${product.price.toFixed()}
-          </span>
-          <div className="text-sm text-gray-500">
-            {product.stock > 0 ? `${product.stock} in Stock` : "Out of Stock"}
-          </div>
+          <span className="text-blue-500 font-semibold ">${product.price}</span>
         </div>
 
-        <div className="mt-4">
-          <span className="text-yellow-500 text-lg">
-            {"★".repeat(Math.round(product.rating))}
-          </span>
-          <span className="text-gray-300 text-lg ">
-            {"★".repeat(Math.round(5 - product.rating))}
-          </span>
-        </div>
+        <div className="mt-4"></div>
       </div>
     </Link>
   );

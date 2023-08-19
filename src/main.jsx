@@ -1,11 +1,10 @@
 /* eslint-disable no-unused-vars */
-import React from "react";
+import React, { useEffect } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import About from "./pages/About.jsx";
-import Contact from "./pages/Contact.jsx";
+import Catalog from "./pages/Catalog.jsx";
 import Products from "./pages/Products.jsx";
 import Cart from "./pages/Cart.jsx";
 import Product from "./pages/Product.jsx";
@@ -23,12 +22,8 @@ const routerProvider = createBrowserRouter([
         element: <Products />,
       },
       {
-        path: "/about",
-        element: <About />,
-      },
-      {
-        path: "/contact",
-        element: <Contact />,
+        path: "/catalog",
+        element: <Catalog />,
       },
       {
         path: "/products",
@@ -45,7 +40,6 @@ const routerProvider = createBrowserRouter([
     ],
   },
 ]);
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ShopProvider>

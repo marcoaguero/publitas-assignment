@@ -13,7 +13,6 @@ export const ShopProvider = ({ children }) => {
       JSON.stringify({ total: state.total, products: state.products })
     );
   }, [state]);
-
   //   addTocart
 
   const calculateTotalPrice = (products) => {

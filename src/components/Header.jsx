@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
 import useShop from "../ShopContext";
 import { BsFillMoonStarsFill, BsFillSunFill } from "react-icons/bs";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DarkModeContext } from "../DarkModeContext";
 
 const Header = () => {
   const { darkMode, toggle } = useContext(DarkModeContext);
   const { products } = useShop();
+  var amountProducts = 0;
+  for (let i = 0; i < products.length; i++) {
+    amountProducts = amountProducts + parseInt(products[i].quantity);
+  }
   return (
     <div className="fixed  top-0  left-0 right-0 bg-white bg-opacity-60  backdrop-blur-md shadow z-10 dark:bg-gray-900  ">
       <div className="max-w-4xl mx-auto flex justify-between items-center p-4     ">
@@ -14,32 +18,18 @@ const Header = () => {
           to="/"
           className="text-xl  font-semibold text-gray-700 dark:text-gray-200 "
         >
-          Logo
+          Publitas assessment
         </Link>
         <ul className="flex  items-center  space-x-8  text-gray-700 dark:text-white">
           <Link to="/" className="hover:text-pink-700 hidden sm:block" href="/">
-            Home
+            Store
           </Link>
           <Link
-            to="/products"
-            className="hover:text-pink-700 hidden sm:block "
-            href="/products"
-          >
-            Products
-          </Link>
-          <Link
-            to="/about"
+            to="/catalog"
             className="hover:text-pink-700 hidden sm:block"
-            href="/about"
+            href="/catalog"
           >
-            About
-          </Link>
-          <Link
-            to="/contact"
-            className="hover:text-pink-700 hidden sm:block"
-            href="/contact"
-          >
-            Contact
+            Catalog
           </Link>
 
           <button onClick={() => toggle(!darkMode)}>
@@ -66,7 +56,7 @@ const Header = () => {
               </svg>
 
               <span className="absolute  -top-1 -right-1  rounded-full w-5 h-5 bg-pink-600  text-white flex justify-center items-center">
-                {products.length}
+                {amountProducts}
               </span>
             </Link>
           </div>

@@ -1,8 +1,8 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import ProductDetailsSkeleton from "./ProductDetailsSkeleton";
 import useShop from "../ShopContext";
+import { fetchProduct } from "../services";
 
 const ProductDetails = () => {
   const { addToCart } = useShop();
@@ -12,49 +12,28 @@ const ProductDetails = () => {
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState("");
   useEffect(() => {
-    const fetProduct = async () => {
-      try {
-        const { data } = await axios.get(
-          `https://dummyjson.com/products/${id}`
-        );
-        console.log(data);
-        setProduct(data);
-        setMainImage(data.thumbnail);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    fetProduct();
+    fetchProduct(id).then((data) => {
+      setProduct(data);
+      setMainImage(data.thumbnail);
+    });
   }, [id]);
 
-  // const product = {
-  //   id: 1,
-  //   title: "iPhone 9",
-  //   description: "An apple mobile which is nothing like apple",
-  //   price: 549,
-  //   discountPercentage: 12.96,
-  //   rating: 4.69,
-  //   stock: 94,
-  //   brand: "Apple",
-  //   category: "smartphones",
-  //   thumbnail: "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-  //   images: [
-  //     "https://i.dummyjson.com/data/products/1/1.jpg",
-  //     "https://i.dummyjson.com/data/products/1/2.jpg",
-  //     "https://i.dummyjson.com/data/products/1/3.jpg",
-  //     "https://i.dummyjson.com/data/products/1/4.jpg",
-  //     "https://i.dummyjson.com/data/products/1/thumbnail.jpg",
-  //   ],
-  // };
+  console.log(product);
 
   if (!product) return <ProductDetailsSkeleton />;
 
   return (
     product && (
       <div className="max-w-4xl mx-auto  py-20 p-4 md:p-8 dark:bg-slate-900 dark:text-white">
-        <button className=" bg-pink-600 text-white py-2 px-4 mb-4  rounded-lg shadow hover:bg-pink-700 transition-colors duration-200">
-          ← Go Back
-        </button>
+        <Link
+          to="/products"
+          className="hover:text-pink-700 hidden sm:block "
+          href="/products"
+        >
+          <button className=" bg-pink-600 text-white py-2 px-4 mb-4  rounded-lg shadow hover:bg-pink-700 transition-colors duration-200">
+            ← Go Back
+          </button>
+        </Link>
         <h1 className="text-3xl font-bold mb-6">{product.title}</h1>
         <div className="md:flex">
           <div className="md:w-1/2 mb-6 pr-4  md:mb-0">
@@ -84,21 +63,7 @@ const ProductDetails = () => {
             {/* price & stock */}
             <div className="flex justify-between items-center mb-4">
               <span className="text-pink-600 font-semibold text-2xl">
-                ${product.price.toFixed()}
-              </span>
-              <span>
-                {product.stock > 0
-                  ? `${product.stock} in Stock`
-                  : "Out of Stock"}
-              </span>
-            </div>
-            {/* starts */}
-            <div className="mb-4">
-              <span className="text-yellow-500 text-lg">
-                {"★".repeat(Math.round(product.rating))}
-              </span>
-              <span className="text-gray-200 text-lg">
-                {"★".repeat(Math.round(5 - product.rating))}
+                ${product.price}
               </span>
             </div>
             {/* button */}

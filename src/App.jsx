@@ -6,7 +6,6 @@ import { DarkModeContext } from "./DarkModeContext";
 
 const App = () => {
   const { darkMode } = useContext(DarkModeContext);
-
   return (
     <div
       className={`   
@@ -14,7 +13,6 @@ const App = () => {
     >
       <div className=" py-16  dark:bg-slate-900">
         <Header />
-
         <Outlet />
         <Footer />
       </div>
