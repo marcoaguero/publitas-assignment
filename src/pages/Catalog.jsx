@@ -23,7 +23,7 @@ const Catalog = () => {
     script.setAttribute("data-height", "undefined");
     script.setAttribute(
       "data-publication",
-      "https://view.publitas.com/marco-aguero/myplants-p6okvrl3b3mb/"
+      "https://view.publitas.com/marco-aguero/phones-dummy-shop/"
     );
     script.setAttribute("data-publication-aspect-ratio", "1");
     script.setAttribute("data-responsive", "true");
