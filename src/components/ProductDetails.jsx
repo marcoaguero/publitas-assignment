@@ -26,9 +26,9 @@ const ProductDetails = () => {
     product && (
       <div className="max-w-4xl mx-auto  py-20 p-4 md:p-8 dark:bg-slate-900 dark:text-white">
         <Link
-          to="/products"
+          to="./products"
           className="hover:text-pink-700 hidden sm:block "
-          href="/products"
+          href="./products"
         >
           <button className=" bg-pink-600 text-white py-2 px-4 mb-4  rounded-lg shadow hover:bg-pink-700 transition-colors duration-200">
             ← Go Back

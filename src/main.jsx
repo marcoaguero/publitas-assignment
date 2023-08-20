@@ -1,50 +1,34 @@
-/* eslint-disable no-unused-vars */
-import React, { useEffect } from "react";
+import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import App from "./App";
 import "./index.css";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import Catalog from "./pages/Catalog.jsx";
-import Products from "./pages/Products.jsx";
-import Cart from "./pages/Cart.jsx";
-import Product from "./pages/Product.jsx";
-import { ShopProvider } from "./ShopContext.jsx";
-import { DarkModeProvider } from "./DarkModeContext.jsx";
+import Catalog from "./pages/Catalog";
+import Products from "./pages/Products";
+import Cart from "./pages/Cart";
+import Product from "./pages/Product";
+import { ShopProvider } from "./ShopContext";
+import { DarkModeProvider } from "./DarkModeContext";
 
-const routerProvider = createBrowserRouter([
-  {
-    path: "/",
-    element: <App />,
+const RoutesConfig = () => (
+  <Routes>
+    <Route path="/publitas-assignment/" element={<App />}>
+      <Route index element={<Products />} />
+      <Route path="catalog" element={<Catalog />} />
+      <Route path="products" element={<Products />} />
+      <Route path="product-details/:id" element={<Product />} />
+      <Route path="cart" element={<Cart />} />
+    </Route>
+  </Routes>
+);
 
-    children: [
-      {
-        index: true,
-        element: <Products />,
-      },
-      {
-        path: "/catalog",
-        element: <Catalog />,
-      },
-      {
-        path: "/products",
-        element: <Products />,
-      },
-      {
-        path: "/product-details/:id",
-        element: <Product />,
-      },
-      {
-        path: "/cart",
-        element: <Cart />,
-      },
-    ],
-  },
-]);
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ShopProvider>
       <DarkModeProvider>
-        <RouterProvider router={routerProvider} />
+        <Router>
+          <RoutesConfig />
+        </Router>
       </DarkModeProvider>
     </ShopProvider>
   </React.StrictMode>
