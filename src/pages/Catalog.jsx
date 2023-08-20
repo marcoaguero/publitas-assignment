@@ -35,7 +35,6 @@ const Catalog = () => {
     document.body.appendChild(script);
 
     return () => {
-      // Cleanup by removing the script only if it's still a child of the body
       if (script.parentNode === document.body) {
         document.body.removeChild(script);
       }
