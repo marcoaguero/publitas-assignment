@@ -1,5 +1,5 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom/client"; // Import from "react-dom/client"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import App from "./App";
 import "./index.css";
@@ -12,7 +12,7 @@ import { DarkModeProvider } from "./DarkModeContext";
 
 const RoutesConfig = () => (
   <Routes>
-    <Route path="/publitas-assignment/" element={<App />}>
+    <Route path="/" element={<App />}>
       <Route index element={<Products />} />
       <Route path="catalog" element={<Catalog />} />
       <Route path="products" element={<Products />} />

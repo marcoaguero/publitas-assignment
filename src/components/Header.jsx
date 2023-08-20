@@ -15,23 +15,19 @@ const Header = () => {
     <div className="fixed  top-0  left-0 right-0 bg-white bg-opacity-60  backdrop-blur-md shadow z-10 dark:bg-gray-900  ">
       <div className="max-w-4xl mx-auto flex justify-between items-center p-4     ">
         <Link
-          to="./"
+          to="/"
           className="text-xl  font-semibold text-gray-700 dark:text-gray-200 "
         >
           Publitas assessment
         </Link>
         <ul className="flex  items-center  space-x-8  text-gray-700 dark:text-white">
-          <Link
-            to="./"
-            className="hover:text-pink-700 hidden sm:block"
-            href="/"
-          >
+          <Link to="/" className="hover:text-pink-700 hidden sm:block" href="/">
             Store
           </Link>
           <Link
-            to="./catalog"
+            to="/catalog"
             className="hover:text-pink-700 hidden sm:block"
-            href="./catalog"
+            href="/catalog"
           >
             Catalog
           </Link>
@@ -45,7 +41,7 @@ const Header = () => {
           </button>
 
           <div className="relative">
-            <Link to="./cart" className="hover:text-pink-700" href="./cart">
+            <Link to="/cart" className="hover:text-pink-700" href="/cart">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
