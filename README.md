@@ -30,7 +30,8 @@ This project involves the integration of a simple React webshop with a Leaflet m
 - When a user interacts with a product hotspot on the Leaflet map, an event is triggered, sending the `product.webshopIdentifier` (as a string) to the webshop. This identifier corresponds to the product's `productId` in the shop.
 - The webshop then checks the products array to identify the product by its `productId` and performs the "addToCart" action accordingly.
 
-`javascript
+```
+javascript
 useEffect(() => {
 getProducts().then((data) => setProducts(data.products));
 }, []);
@@ -40,7 +41,8 @@ if (event.data.type === "addToCart") {
 const productId = parseInt(event.data.productId);
 addToCart(products[productId - 1]);
 }
-});`
+});
+```
 
 ### Cart Button
 
